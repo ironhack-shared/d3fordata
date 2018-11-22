@@ -17922,25 +17922,63 @@
     zoomIdentity: identity$8
   });
 
-  class Test {
-  	constructor(a) {
-  		this.a = a;
-  	}
+  function generateRandomInteger(min$$1, max$$1) {
+  	return Math.floor(min$$1 + Math.random() * (max$$1 + 1 - min$$1))
   }
 
-  class Test2 {
-  	constructor() {
+  window.arr = [];
+
+  document.querySelector("#test").onclick = function () {
+  	window.arr = sequence(generateRandomInteger(1, 10)).map(function (val) {
+  		return generateRandomInteger(15, 20)
+  	});
+
+  	console.log(arr);
+
+  	selectAll('p')
+  		.data(arr)
+  		.exit()
+  		.remove();
+
+  	selectAll('p')
+  		.data(arr)
+  		.enter()
+  		.append('p');
+
+  	selectAll('p')	
+  		.html(function (d) {
+  			return d;
+  		});
   		
-  	}
-  }
 
-  console.log(d3);
-  console.log(Test);
-  console.log(Test2);
+  };
 
-  let t2$1 = new Test();
+  // d3.interval(function () {
+  // 	window.arr = d3.range(generateRandomInteger(1, 20)).map(function (val) {
+  // 		return generateRandomInteger(15, 20)
+  // 	})
 
-  console.log(t2$1);
-  console.log(3+2122);
+  // 	console.log(arr)
+
+  // 	d3.selectAll('p')
+  // 		.data(arr)
+  // 		.exit()
+  // 		.remove()
+
+
+  // 	d3.selectAll('p')
+  // 		.data(arr)
+  // 		.enter()
+  // 		.append('p')
+  // 		.html(function (d) {
+  // 			return d;
+  // 		})
+  // 	// 	.transition()
+  // 	// 	.style("font-size", function (d) {
+  // 	// 		return d + "px";
+  // 	// 	});
+  // }, 2000)
+
+  window.d3 = d3;
 
 })));
