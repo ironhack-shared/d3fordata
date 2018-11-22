@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "rollup -c -w"
+    "start": "concurrently './node_modules/http-server/bin/http-server -c-1' 'rollup -c -w'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^4.1.0",
     "d3": "^5.7.0",
+    "http-server": "^0.11.1",
     "rollup": "^0.67.3",
     "rollup-plugin-node-resolve": "^3.4.0"
   }

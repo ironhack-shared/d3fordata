@@ -17938,8 +17938,9 @@
   console.log(Test);
   console.log(Test2);
 
-  let t = new Test();
+  let t2$1 = new Test();
 
-  console.log(t);
+  console.log(t2$1);
+  console.log(3+2122);
 
 })));
