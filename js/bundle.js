@@ -17925,8 +17925,7 @@
   window.arr = [];
 
   document.querySelector("#test").onclick = function () {
-  	json('../json/nph-nstedAPI.json').then((planets) => {
-  		console.log("done");
+  	json('http://127.0.0.1:3000').then((planets) => {
   		window.planets = planets;
 
   		planets

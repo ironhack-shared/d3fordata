@@ -7,8 +7,7 @@ function generateRandomInteger(min, max) {
 window.arr = []
 
 document.querySelector("#test").onclick = function () {
-	d3.json('../json/nph-nstedAPI.json').then((planets) => {
-		console.log("done")
+	d3.json('http://127.0.0.1:3000').then((planets) => {
 		window.planets = planets
 
 		planets

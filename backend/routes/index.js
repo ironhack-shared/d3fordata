@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const fetch = require('node-fetch');
+const Planet = require('../models/Planet')
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-  const url = "https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=exoplanets&format=json"
-  fetch(url)
-  .then(res => res.json())
-  .then(json => res.json(json));
-
+  Planet.find({ pl_radj: { $ne: null } }, { pl_hostname: 1, pl_name: 1, pl_radj: 1 })
+  .sort({pl_radj: -1})
+  .limit(20)
+  .then((planets) => {
+    res.json(planets)
+  })
 })
 
 module.exports = router;
