@@ -7,54 +7,18 @@ function generateRandomInteger(min, max) {
 window.arr = []
 
 document.querySelector("#test").onclick = function () {
-	window.arr = d3.range(generateRandomInteger(1, 10)).map(function (val) {
-		return generateRandomInteger(15, 20)
+	d3.json('../json/nph-nstedAPI.json').then((planets) => {
+		console.log("done")
+		window.planets = planets
+
+		planets
+			.filter((planet) => {
+				return planet.pl_radj !== null
+			})
+			.forEach((planet, i) => {
+				console.log(`${i}: ${planet.pl_name} ${planet.pl_radj}`)
+			})
 	})
-
-	console.log(arr)
-
-	d3.selectAll('p')
-		.data(arr)
-		.exit()
-		.remove()
-
-	d3.selectAll('p')
-		.data(arr)
-		.enter()
-		.append('p')
-
-	d3.selectAll('p')	
-		.html(function (d) {
-			return d;
-		})
-		
-
 }
-
-// d3.interval(function () {
-// 	window.arr = d3.range(generateRandomInteger(1, 20)).map(function (val) {
-// 		return generateRandomInteger(15, 20)
-// 	})
-
-// 	console.log(arr)
-
-// 	d3.selectAll('p')
-// 		.data(arr)
-// 		.exit()
-// 		.remove()
-
-
-// 	d3.selectAll('p')
-// 		.data(arr)
-// 		.enter()
-// 		.append('p')
-// 		.html(function (d) {
-// 			return d;
-// 		})
-// 	// 	.transition()
-// 	// 	.style("font-size", function (d) {
-// 	// 		return d + "px";
-// 	// 	});
-// }, 2000)
 
 window.d3 = d3
