@@ -5,5 +5,9 @@ export default {
   format: "umd",
   moduleName: "d3",
   plugins: [node()],
-  dest: "js/bundle.js"
+  dest: "js/bundle.js",
+  onwarn: function ( message ) {
+    if ( /CIRCULAR_DEPENDENCY/.test( message.code ) ) return;
+    console.error( message );
+  }
 };
